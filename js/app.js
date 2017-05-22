@@ -1,39 +1,43 @@
-angular.module('devmtnTravel', ['ui.router'])
+var app = angular.module('devmtnTravel', ['ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('home', {
+            .state({
+                name: "home",
                 url: '/',
-                templateUrl: "./views/about.html"
+                templateUrl: "../views/about.html"
             })
-            .state('adventurers', {
-                url: '/adventurers',
-                parent: 'home',
-                templateUrl: "./views/about-adventurers.html"
-            })
-            .state('contact', {
-                url: '/contact',
-                parent: 'home',
-                templateUrl: "./views/contact.html"
-            })
-            .state('packages', {
-                url: '/packages/:country',
-                templateUrl: "./views/packages.html",
-                controller: 'packageCtrl'
+            .state({
+                name: "adventurers",
+                url: "/adventurers",
+                templateUrl: "../views/about-adventurers.html"
 
             })
-            .state('booked', {
-                url: '/booked/:id',
-                templateUrl: "./views/booked.html",
-                controller: 'bookedCtrl'
-
+            .state({
+                name: "contact",
+                url: "/contact",
+                templateUrl: "../views/contact.html"
             })
-            .state('locations', {
-                url: '/locations',
-                templateUrl: "./views/locations.html",
-                controller: 'locationCtrl'
+            .state({
+                name: "packages",
+                url: "/packages/:country",
+                templateUrl: "../views/packages.html",
+                controller: "packagesCtrl"
+            })
+            .state({
+                name: "booked",
+                url: "/booked/:id",
+                templateUrl: "../views/booked.html",
+                controller: "bookedCtrl"
+            })
+            .state({
+                name: "locations",
+                url: "/locations",
+                templateUrl: "../views/locations.html",
+                controller: "locationsCtrl"
+            })
 
-            });
+
 
         $urlRouterProvider
-            .otherwise('/');
+            .when("", '/');
     });
